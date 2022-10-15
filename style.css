@@ -1,0 +1,198 @@
+body {
+  background-color: #f7f7f7;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  display: grid;
+  gap: 60px;
+  justify-items: center;
+  margin-top: 60px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0px;
+}
+
+p {
+  font-size: 1.25rem; /*era 20 px. 20/16*/
+  line-height: 1.3;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  gap: 60px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap; /*Caso não caiba todos os elementos em uma mesma linha, quebre para a próxima.*/
+  gap: 20px;
+  justify-content: center; /*toda vez que os itens quebrarem a linha ao centro mesmo quando tem a quebra do item*/
+}
+
+.menu a {
+  display: block;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  color: #000;
+  text-transform: uppercase; /*letra maíscula*/
+  border: 2px solid #fff; /*para não ficar pulando o item qundo colocar o hover no a*/
+}
+
+.menu a:hover {
+  border-color: #e21;
+}
+
+.conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+}
+
+.introducao h1 {
+  font-size: 2rem;
+}
+
+.introducao {
+  background-color: #ffffff;
+  padding: 40px; /*desgrudar os elementos da ponta*/
+  text-align: right;
+  position: relative;
+  display: grid;
+  gap: 20px;
+  align-content: center;
+  justify-items: end; /*para que todos os itens fiquem alinhados na ponta*/
+}
+
+.introducao::before {
+  content: ""; /*regra do pseudoelemento é sempre ter um conteúdo*/
+  width: 60px;
+  height: 4px;
+  background: #ee221e;
+  /*display: inline-block;*/ /*não precisa mais, pois já definiu na introdução (elemento que segura o detalhe) como display grid*/
+  position: absolute; /*em relação ao body, caso o elemento pai não tenha um posicionamento diferente. Nesse caso, precisamos deixar .introducao com position relative, para que assim o elemento se posicione em relação ao elemento que o está segurando*/
+  top: 30px;
+  right: -30px; /*para jogar o detalhe do outro lado*/
+}
+
+.introducao-cover img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.botao {
+  background-color: #ee221e;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.botao:hover {
+  background: #900;
+}
+
+.subtitulo {
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.2);
+  text-align: right; /*alinhar o texto para a direita*/
+  padding: 40px;
+  align-self: center; /*alinhar só um item específico*/
+  background-image: url("./img/onda.svg");
+  /* word-break: break-all; para quebrar a palavra*/
+}
+
+.vantagens {
+  background-color: #ffffff;
+  padding: 40px;
+}
+
+.vantagens-item {
+  display: grid;
+  grid-template-columns: auto 1fr; /*auto:para pegar exatamente o valor do conteúdo*/
+  gap: 10px 20px; /*distanciamento das linhas, distanciamento das colunas*/
+  padding: 20px;
+  border-left: 4px solid transparent;
+}
+
+.vantagens-item :nth-child(odd) {
+  background: #f7f7f7;
+}
+
+.vantagens-item:hover {
+  border-left: 4px solid #900;
+}
+
+.vantagens-item p {
+  grid-column: 2;
+}
+
+footer {
+  width: 100%; /*na hora que colocamos um background percebemos que pega somente o tamanho do conteúdo por causa do grid. Assim para o elemento expandir de ponta a ponta colocamos o width. Width é somado com o padding e border*/
+  text-align: center;
+  padding: 40px;
+  box-sizing: border-box; /*para respeitar somente o tamanho do widht*/
+}
+
+/*RESPONSIVO*/
+
+@media (max-width: 1000px) {
+  .conteudo-vantagem {
+    grid-template-columns: 1fr;
+  }
+  .subtitulo {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    gap: 30px;
+    margin-top: 20px;
+  }
+  .header {
+    gap: 30px;
+  }
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+  .introducao {
+    text-align: left;
+    justify-items: start;
+  }
+  .introducao::before {
+    display: none;
+  }
+  .subtitulo {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .subtitulo {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
